@@ -13,7 +13,26 @@ function setRotationInTurns(domNode, turns){
   style.oTransform = transform;
   style.transform = transform;
 }
+function computeClockHandRotationInTurns(){
+  const ahora = new Date();
+  return{
+    secondTurns: ahora.getSeconds() / 60,
+    minuteTurns: ahora.getMinutes() / 60,
+    hourTurns: ahora.getHours() / 12,
+  }
+}
 
-setRotationInTurns(second, 0.25);
-setRotationInTurns(minute, 0.5);
-setRotationInTurns(hour, 0.75);
+function updateClockHandRotations(){
+
+  const{
+    secondTurns,
+    minuteTurns,
+    hourTurns
+  } = computeClockHandRotationInTurns();
+  
+  setRotationInTurns(second, secondTurns);
+  setRotationInTurns(minute, minuteTurns);
+  setRotationInTurns(hour, hourTurns);
+}
+
+setInterval(updateClockHandRotations, 1000);

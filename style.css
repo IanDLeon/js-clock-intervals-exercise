@@ -17,6 +17,8 @@
   position: absolute;
   top: 0px;
   left: 0px;
+  transition-property: all;
+  transition-duration: 500ms;
 
  
 }
